@@ -64,7 +64,26 @@ int P8[] = {6, 3, 7, 4, 8, 5, 10, 9};
 
 int P10[] = {3, 5, 2, 7, 4, 10, 1, 9, 8, 6};
 
-
+void subKey(int *key, int *keeper, int numBits);
+void copy(int *source, int *destination, int size);
+void charToBinary(char c, int *binary);
+char binaryToChar(int *binary);
+void initPerm(int *plaintext);
+void expPerm(int *right);
+void xorArrays(int *arr1, int *arr2, int size, int *result);
+void sBox(int *input, int sBox[4][4], int *output);
+void combine2BArrays(int *array1, int *array2, int *result);
+void p4Perm(int *input);
+void xorWithLeft(int *lhs, int *input);
+void combineArrays(int *array1, int *array2, int *result);
+void swap(int *array, int size);
+void CLS(int *key, int bits, int keySize);
+void p8Perm(int *key);
+void Encrypt();
+void encryptP(unsigned char *pix, int size);
+void decryptP(unsigned char *pix, int size);
+void incrementBinaryArray(int binaryArray[], int size);
+void clearArray(int binaryArray[], int size);
 
  
 int main()
