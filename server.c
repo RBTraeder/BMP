@@ -83,7 +83,7 @@ int menu_11(int new_socket, int read_size)
 	{
 		printf(" > Received Cert Chain [%2i byte]\n", read_size);
 		Chain chain;
-		stringToChain(ccStr, &chain);
+		stringtoChain(ccStr, &chain);
 		writeChain(LOCAL_FILEPATH_CC, &chain);
 		printf(" > \"%s\" created/updated\n", LOCAL_FILEPATH_CC);
 		break;
