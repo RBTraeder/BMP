@@ -511,31 +511,6 @@ void CRL_FileToString(const char *filename, char **certStr)
     }
 }
 
-void chainfiletostring(const char *filename, char **chainStr)
-{
-    Chain newChain;
-    int entries = readChain(filename, &newChain);
-
-    size_t totalSize;
-    for (int i = 0; i < entries; i++)
-        totalSize = totalSize + (strlen(newChain.file_loc[0]) + strlen(newChain.CA[0]) + strlen(newChain.A[0]) + 3);
-    *chainStr = (char *)malloc(totalSize);
-    if (*chainStr == NULL) {
-        fprintf(stderr, "Memory allocation failed\n");
-        exit(EXIT_FAILURE);
-    }
-
-    (*chainStr)[0] = '\0';
-    for (int i = 0; i < entries; i++)
-    {
-        strcat(*chainStr, newChain.file_loc[i]);
-        strcat(*chainStr, "\n");
-        strcat(*chainStr, newChain.CA[i]);
-        strcat(*chainStr, "\n");
-        strcat(*chainStr, newChain.A[i]);
-        strcat(*chainStr, "\n");
-    }
-}
 
 
 void stringToCRL(const char *certStr, CRL *cert) {
@@ -716,6 +691,9 @@ int readChain(const char *chainfile, Chain *outChain)
     fclose(readFile);
     return i;
 }
+
+
+
 int verifyChain(const char *c1, const char *c2, const char *crl, const char *chn)
 {
     char trustLevel[2];
